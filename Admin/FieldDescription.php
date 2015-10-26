@@ -96,6 +96,10 @@ class FieldDescription extends BaseFieldDescription
     {
         foreach ($this->parentAssociationMappings as $parentAssociationMapping) {
             $object = $this->getFieldValue($object, $parentAssociationMapping['fieldName']);
+
+            if (!$object) {
+                return null;
+            }
         }
 
         return $this->getFieldValue($object, $this->fieldName);
